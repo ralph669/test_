@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumno{% endblock %}
+
+{% block body %}
+<h1 class="center-text">Vista Alumnnos</h1>
+
+{# <div>
+{% for alumno in alumnos %}
+{{ alumno.Nombre }} {{ alumno. Apellidos }} | {{ alumno.Edad }} </br> {% endfor %}
+</div> #}
+
+{# <a href='{{path('app_profesor')}}' >ir vista Profesores </a> #}
+
+<div class="container mt-4">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Grado</th>
+                <th scope="col">Sección</th>
+                <th scope="col">Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+                <tr>
+                    <th scope="row">{{ alumno.id }}</th>
+                    <td>{{ alumno.Nombre }}</td>
+                    <td>{{ alumno.Apellidos }}</td>
+                    <td>{{ alumno.Edad }}</td>
+                    <td>{{ alumno.Grado }}</td>
+                    <td>{{ alumno.Seccion }}</td>
+                    <td>
+                        {% if (alumno.foto !=null)%}
+                        <img src="{{asset('/img/'~alumno.foto)}}"  alt="Foto Alumno">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">No products found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{# <div>
+    {{ form(formulario) }}
+</div> #}
+
+<div class="container mt-4">
+    <h1 class="mb-4 center-text">Crear nuevo Alumnos</h1>
+
+    
+    {{ form_start(form, {'attr': {'class': ''}}) }}
+    <div class="mb-3">
+        {{ form_label(form.Nombre) }}
+        {{ form_widget(form.Nombre) }}
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Apellidos) }}
+        {{ form_widget(form.Apellidos) }}
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Edad) }}
+        {{ form_widget(form.Edad) }}
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Grado) }}
+        {{ form_widget(form.Grado) }}
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Seccion) }}
+        {{ form_widget(form.Seccion) }}
+    </div>
+    <div  class="mb-3">
+        {{ form_label(form.foto)}}
+        {{ form_widget(form.foto)}}
+    </div>
+    
+    <div class="center-text">
+        {# <button type="submit" class="btn btn-primary">Crear</button> #}
+        {{form_row(form.Guardar, {'attr': {'class': 'btn btn-primary mt-2 w-100'}})}}
+    </div>
+    {{ form_end(form) }}
+</div>
+
+{# 
+<div class="container mt-4">
+    <h1 class="mb-4 center-text">Crear nuevo Alumnos</h1>
+
+    
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+    <div class="mb-3">
+        {{ form_label(form.Nombre) }}
+        {{ form_widget(form.Nombre) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.Nombre) }}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Apellidos) }}
+        {{ form_widget(form.Apellidos) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.Apellidos) }}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Edad) }}
+        {{ form_widget(form.Edad) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.Edad) }}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Grado) }}
+        {{ form_widget(form.Grado) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.Grado) }}
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.Seccion) }}
+        {{ form_widget(form.Seccion) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.Seccion) }}
+        </div>
+    </div>
+    <div class="center-text">
+        <button type="submit" class="btn btn-primary">Crear</button>
+    </div>
+    {{ form_end(form) }}
+</div> #}
+
+
+
+
+
+
+
+{% endblock %}
