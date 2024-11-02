@@ -24,6 +24,8 @@ class AlumnoController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             //    $data = $form->getData();
+            //    $data = $form->getData();           
+            
                 $archivo = $form['foto']->getData();
                 $destino = $this->getParameter('kernel.project_dir').'/public/img';
                 $archivo->move($destino, $archivo->getClientOriginalName());
